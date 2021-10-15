@@ -31,9 +31,6 @@ on home page(contact page):
 on appointment page:
 
 - The user can view appointments (the application starts with no appointments)
-<<<<<<< HEAD
-- The user can view create an appointment (by clicking on the dropdown icon parallel to add appointment label, fill in the correct data and click submit)
-=======
 - The user can create an appointment (by clicking on the dropdown icon parallel to add appointment label, fill in the correct data and click submit)
 
 ## Installation
@@ -43,4 +40,3 @@ on appointment page:
 - Open your editors terminal
 - Type npm install in the terminal and hit enter (to install application dependancies)
 - Type npm start in the terminal and hit enter (if you did everything right then the application starts on port 3000)
->>>>>>> 94c6a99c64c24aa03618fa62a19d1d5765d5e677
