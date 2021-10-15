@@ -23,6 +23,10 @@ it is implemented with react functional components and redux
 
 ## Usage
 
+the project is deployed on netlify with this url:
+
+- https://hopeful-clarke-2da22a.netlify.app/
+
 on home page(contact page):
 
 - The user can view contacts (the application starts at contacts page and starts with no contacts)
