@@ -26,12 +26,12 @@ it is implemented with react functional components and redux
 on home page(contact page):
 
 - The user can view contacts (the application starts at contacts page and starts with no contacts)
-- The user can view create a contact (by clicking on the dropdown icon parallel to add contact label, fill in the correct data and click submit)
+- The user can create a contact (by clicking on the dropdown icon parallel to add contact label, fill in the correct data and click submit)
 
 on appointment page:
 
 - The user can view appointments (the application starts with no appointments)
-- The user can view create an appointment (by clicking on the dropdown icon parallel to add appointment label, fill in the correct data and click submit)
+- The user can create an appointment (by clicking on the dropdown icon parallel to add appointment label, fill in the correct data and click submit)
 
 ## Installation
 
