@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ContactForm } from "../../components/contactForm/ContactForm";
 import { TileList } from "../../components/tileList/TileList";
@@ -64,7 +64,7 @@ export const ContactsPage = () => {
 				!(
 					lastAtPos < lastDotPos &&
 					lastAtPos > 0 &&
-					email.indexOf("@@") == -1 &&
+					email.indexOf("@@") === -1 &&
 					lastDotPos > 2 &&
 					email.length - lastDotPos > 2
 				)

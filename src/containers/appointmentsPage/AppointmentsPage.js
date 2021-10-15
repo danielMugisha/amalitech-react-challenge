@@ -23,7 +23,7 @@ export const AppointmentsPage = () => {
 	};
 
 	const timeFormat = (time) => {
-		const [hour, minute, second] = time
+		const [hour, minute] = time
 			.toTimeString()
 			.toString()
 			.split(" ")[0]

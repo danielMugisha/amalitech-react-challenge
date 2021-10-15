@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ContactPicker } from "../contactPicker/ContactPicker";
 import { TextField } from "@material-ui/core";
 import DateMomentUtils from "@date-io/moment";
@@ -66,8 +66,6 @@ export const AppointmentForm = ({
 
 	const minDate = getTodayString();
 	console.log(minDate);
-
-	const [access, setAccess] = useState(true);
 
 	const setSelectedContact = (selectedContact) => {
 		setContact(selectedContact);
