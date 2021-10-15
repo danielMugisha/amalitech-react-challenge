@@ -163,3 +163,13 @@ h2 {
 	justify-content: flex-end;
 	flex: 0.2;
 }
+
+@media only screen and (max-width: 600px) {
+	.links > a {
+		font-size: 18px;
+	}
+	.tileContainer {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}
