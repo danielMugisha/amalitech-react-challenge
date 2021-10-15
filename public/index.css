@@ -1,0 +1,165 @@
+* {
+	margin: 0;
+}
+body::-webkit-scrollbar {
+	display: none;
+}
+body {
+	background-color: #eef6f6;
+	display: flex;
+	justify-content: center;
+	padding: 0;
+}
+
+h2 {
+	color: darkslategray;
+}
+#root {
+	width: 100%;
+	height: 100vh;
+	padding: 0px;
+	margin: 0px;
+	font-family: "Open Sans", sans-serif;
+}
+
+.header {
+	width: 100%;
+	height: 300px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	background-color: #2fc8b8;
+}
+
+.links > a {
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	text-decoration: none;
+	margin-bottom: 0;
+	height: 100%;
+	margin: 0 20px;
+	color: #2fc8b8;
+	text-transform: uppercase;
+}
+
+.links > a.active {
+	color: white;
+}
+
+.navigation {
+	width: 80%;
+	height: 60%;
+	background-color: #1e776e;
+	border-radius: 20px 20px 0px 0px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+.links {
+	height: 50px;
+	margin-bottom: 0;
+	padding: 0;
+	display: flex;
+	align-items: flex-end;
+}
+
+.container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.form {
+	width: 70%;
+	background-color: white;
+	border-radius: 0 0 10px 10px;
+	padding: 10px;
+	box-shadow: 0px 3px 16px #0000001f;
+}
+
+.formHeader {
+	display: flex;
+	justify-content: space-between;
+}
+
+.formBody {
+	text-align: center;
+	transition: all 0.3s linear 0s;
+}
+
+.submitButton {
+	background-color: #1e776e;
+	height: 50px;
+	width: 150px;
+	border: none;
+	border-radius: 6px 6px 6px 6px;
+	color: #ffffff;
+	font-weight: 600;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.toggleButton {
+	background-color: transparent;
+	border: none;
+	color: #1e776e;
+	font-weight: 700;
+	font-size: 36px;
+}
+
+.listWrapper {
+	width: 70%;
+	padding: 10px;
+	margin-top: 20px;
+}
+
+.tileContainer {
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+	min-height: 30px;
+	padding: 10px;
+	align-items: center;
+}
+
+.tileContainer:hover {
+	background-color: white;
+}
+
+.tileDiv {
+	flex: 1;
+	margin: 2px;
+	font-size: 20;
+	font-weight: 600;
+}
+
+.tileLeft {
+	font-size: 24px;
+	display: flex;
+	justify-content: flex-start;
+	font-weight: 600;
+	color: #1e776e;
+	flex: 0.3;
+}
+
+.tileRight {
+	display: flex;
+	justify-content: flex-end;
+
+	flex: 0.2;
+}
+
+.tileCenter {
+	display: flex;
+	justify-content: flex-end;
+	flex: 0.3;
+}
+
+.tileCenter2 {
+	display: flex;
+	justify-content: flex-end;
+	flex: 0.2;
+}
