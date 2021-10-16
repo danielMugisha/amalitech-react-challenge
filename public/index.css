@@ -174,4 +174,16 @@ h2 {
 		flex-direction: column;
 		align-items: flex-start;
 	}
+	.header {
+		height: 150px;
+	}
+	.form {
+		width: 90%;
+	}
+	.tileContainer:hover {
+		background-color: white;
+	}
+	.links {
+		height: 25px;
+	}
 }
