@@ -4,6 +4,7 @@ import { ContactForm } from "../../components/contactForm/ContactForm";
 import { TileList } from "../../components/tileList/TileList";
 import { setContacts } from "../../store/actions/contactsActions";
 import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs";
+import Alert from "../../components/alert/Alert";
 
 export const ContactsPage = () => {
 	const { contacts } = useSelector((state) => state.contacts);
@@ -13,7 +14,10 @@ export const ContactsPage = () => {
 	const [phone, setPhone] = useState("");
 	const [email, setEmail] = useState("");
 	const [showForm, setShowForm] = useState(false);
+	const [showAlert, setShowAlert] = useState(false);
+	const [showSuccess, setShowSuccess] = useState(false);
 	let errors = [];
+	const [passedErrors, setPassedErrors] = useState([]);
 
 	const handleValidation = (name, phone, email) => {
 		let formIsValid = true;
@@ -32,8 +36,12 @@ export const ContactsPage = () => {
 			}
 		}
 
-		//Phone
+		if (contacts.find((contact) => contact.name === name)) {
+			errors.push("There is a contact with the same name");
+			formIsValid = false;
+		}
 
+		//Phone
 		if (phone === "") {
 			errors.push("Name Cannot be empty");
 			formIsValid = false;
@@ -48,6 +56,11 @@ export const ContactsPage = () => {
 				errors.push("Invalid phone number");
 				formIsValid = false;
 			}
+		}
+
+		if (contacts.find((contact) => contact.phone === phone)) {
+			errors.push("There is a contact with the same phone number");
+			formIsValid = false;
 		}
 
 		//Email
@@ -74,36 +87,28 @@ export const ContactsPage = () => {
 			}
 		}
 
+		if (contacts.find((contact) => contact.email === email)) {
+			errors.push("There is a contact with the same email");
+			formIsValid = false;
+		}
+
 		return formIsValid;
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const valid = handleValidation(name, phone, email);
-		console.log(valid);
 
 		if (valid === false) {
-			window.alert("Fill the form correctly");
-			console.log("errors:", errors);
+			openAlert();
 			return;
 		} else {
-			if (
-				contacts.find(
-					(contact) => contact.phone === phone || contact.email === email
-				)
-			) {
-				window.alert("There is a contact with the same number or email");
-				return;
-			} else if (contacts.find((contact) => contact.name === name)) {
-				window.alert("There is a contact with the same name");
-				return;
-			} else {
-				contacts.push({ name, phone, email });
-				dispatch(setContacts(contacts));
-				setName("");
-				setPhone("");
-				setEmail("");
-			}
+			contacts.push({ name, phone, email });
+			dispatch(setContacts(contacts));
+			setShowSuccess(true);
+			setName("");
+			setPhone("");
+			setEmail("");
 		}
 	};
 
@@ -111,12 +116,37 @@ export const ContactsPage = () => {
 		setShowForm(!showForm);
 	};
 
+	const openAlert = () => {
+		setPassedErrors(errors);
+		setShowAlert(true);
+		console.log("errors:", errors);
+	};
+
+	const closeAlert = (bool) => {
+		if (bool === "showAlert") setShowAlert(false);
+		if (bool === "showSuccess") setShowSuccess(false);
+	};
+
 	return (
 		<>
+			{showAlert && (
+				<Alert
+					content={passedErrors[0]}
+					onClose={() => closeAlert("showAlert")}
+					open={showAlert}
+				/>
+			)}
+			{showSuccess && (
+				<Alert
+					content="Successfully submitted"
+					onClose={() => closeAlert("showSuccess")}
+					open={showSuccess}
+				/>
+			)}
 			<div className="form">
-				<div className="formHeader">
+				<div className="formHeader" onClick={toggleForm}>
 					<h2>Add Contact</h2>
-					<button className="toggleButton" onClick={toggleForm}>
+					<button className="toggleButton">
 						{showForm ? <BsChevronCompactUp /> : <BsChevronCompactDown />}
 					</button>
 				</div>
