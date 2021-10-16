@@ -186,4 +186,7 @@ h2 {
 	.links {
 		height: 25px;
 	}
+	.modal {
+		width: 70%;
+	}
 }
