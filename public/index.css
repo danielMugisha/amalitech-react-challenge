@@ -1,9 +1,6 @@
 * {
 	margin: 0;
 }
-body::-webkit-scrollbar {
-	display: none;
-}
 body {
 	background-color: #eef6f6;
 	display: flex;
@@ -41,7 +38,7 @@ h2 {
 	text-decoration: none;
 	margin-bottom: 0;
 	height: 100%;
-	margin: 0 20px;
+
 	color: white;
 	text-transform: uppercase;
 }
@@ -62,11 +59,11 @@ h2 {
 }
 
 .links {
-	height: 50px;
 	margin-bottom: 0;
 	padding: 0;
+	width: 100%;
+	justify-content: space-around;
 	display: flex;
-	align-items: flex-end;
 }
 
 .container {
@@ -170,7 +167,7 @@ h2 {
 
 @media only screen and (max-width: 600px) {
 	.links > a {
-		font-size: 18px;
+		font-size: 12px;
 	}
 	.tileContainer {
 		flex-direction: column;
