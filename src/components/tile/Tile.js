@@ -1,4 +1,6 @@
 import React from "react";
+import { Button } from "@material-ui/core";
+import { Event } from "@material-ui/icons";
 
 export const Tile = ({ content }) => {
   const gapi = window.gapi;
@@ -11,6 +13,13 @@ export const Tile = ({ content }) => {
   const SCOPES = "https://www.googleapis.com/auth/calendar.events";
 
   const handleClick = () => {
+    let starttime = content.date + "T" + content.time + ":00+02:00";
+    let starthour = content.time.split(":");
+    let hour = parseInt(starthour[0], 10);
+    hour += 1;
+    let endhour = hour + ":" + starthour[1];
+    let endtime = content.date + "T" + endhour + ":00+02:00";
+
     gapi.load("client:auth2", () => {
       console.log("Loading client");
 
@@ -26,23 +35,19 @@ export const Tile = ({ content }) => {
         .signIn()
         .then(() => {
           var event = {
-            summary: "Google I/O 2015",
-            location: "800 Howard St., San Francisco, CA 94103",
-            description:
-              "A chance to hear more about Google's developer products.",
+            summary: content.title,
+            location: "Kigali - Rwanda",
+            description: content.title,
             start: {
-              dateTime: "2015-05-28T09:00:00-07:00",
-              timeZone: "America/Los_Angeles",
+              dateTime: starttime,
+              timeZone: "Africa/Kigali",
             },
             end: {
-              dateTime: "2015-05-28T17:00:00-07:00",
-              timeZone: "America/Los_Angeles",
+              dateTime: endtime,
+              timeZone: "Africa/Kigali",
             },
-            recurrence: ["RRULE:FREQ=DAILY;COUNT=2"],
-            attendees: [
-              { email: "lpage@example.com" },
-              { email: "sbrin@example.com" },
-            ],
+            recurrence: ["RRULE:FREQ=DAILY;COUNT=1"],
+            attendees: [{ email: content.contact.email }],
             reminders: {
               useDefault: false,
               overrides: [
@@ -55,6 +60,7 @@ export const Tile = ({ content }) => {
           var request = gapi.client.calendar.events.insert({
             calendarId: "primary",
             resource: event,
+            sendUpdates: "all",
           });
 
           request.execute(function (event) {
@@ -79,7 +85,14 @@ export const Tile = ({ content }) => {
       <div className="tileDiv tileRight">
         <p>{`${content.email ? content.email : content.time}`}</p>
       </div>
-      <button onClick={handleClick}>Add Event</button>
+      <Button
+        variant="contained"
+        color="secondary"
+        startIcon={<Event />}
+        onClick={handleClick}
+      >
+        Add To Google
+      </Button>
     </div>
   );
 };
