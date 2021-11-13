@@ -9,6 +9,7 @@ import {
 	MuiPickersUtilsProvider,
 } from "@material-ui/pickers";
 import AccessTimeOutlinedIcon from "@material-ui/icons/AccessTimeOutlined";
+import { MINDATE } from "../../utils/utils";
 
 const materialTheme = createTheme({
 	overrides: {
@@ -57,16 +58,6 @@ export const AppointmentForm = ({
 	setTime,
 	handleSubmit,
 }) => {
-	const getTodayString = () => {
-		const [month, day, year] = new Date()
-			.toLocaleDateString("en-US")
-			.split("/");
-		return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
-	};
-
-	const minDate = getTodayString();
-	console.log(minDate);
-
 	const setSelectedContact = (selectedContact) => {
 		setContact(selectedContact);
 	};
@@ -91,7 +82,7 @@ export const AppointmentForm = ({
 			<MuiPickersUtilsProvider utils={DateMomentUtils}>
 				<ThemeProvider theme={materialTheme}>
 					<KeyboardDatePicker
-						minDate={minDate}
+						minDate={MINDATE}
 						autoOk
 						variant="inline"
 						inputVariant="outlined"

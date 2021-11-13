@@ -5,6 +5,8 @@ import { TileList } from "../../components/tileList/TileList";
 import { setAppointments } from "../../store/actions/appointmentsActions";
 import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs";
 import Alert from "../../components/alert/Alert";
+import { v4 as uuid4 } from "uuid";
+import { dateFormat, timeFormat, handleValidation } from "../../utils/utils";
 
 export const AppointmentsPage = () => {
 	const { contacts } = useSelector((state) => state.contacts);
@@ -21,49 +23,24 @@ export const AppointmentsPage = () => {
 	let errors = [];
 	const [passedErrors, setPassedErrors] = useState([]);
 
-	const dateFormat = (date) => {
-		const [month, day, year] = date.toLocaleDateString("en-US").split("/");
-		return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
-	};
-
-	const timeFormat = (time) => {
-		const [hour, minute] = time
-			.toTimeString()
-			.toString()
-			.split(" ")[0]
-			.split(":");
-		return `${hour}:${minute}`;
-	};
-
-	const handleValidation = (title, contact) => {
-		let formIsValid = true;
-
-		//Title
-		if (title === "") {
-			errors.push("Title Cannot be empty");
-			formIsValid = false;
-		}
-
-		//Contact
-		if (contact === null || typeof contact === undefined) {
-			errors.push("Contact Cannot be empty");
-			formIsValid = false;
-		}
-
-		return formIsValid;
-	};
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const valid = handleValidation(title, contact);
 		const _date = dateFormat(new Date(date));
 		const _time = timeFormat(new Date(time));
+		errors = [...valid.errors];
 
-		if (valid === false) {
+		if (valid.formIsValid === false) {
 			openAlert();
 			return;
 		} else {
-			appointments.push({ title, date: _date, time: _time, contact });
+			appointments.push({
+				id: uuid4(),
+				title,
+				date: _date,
+				time: _time,
+				contact,
+			});
 			dispatch(setAppointments(appointments));
 			setShowSuccess(true);
 			setTitle("");
