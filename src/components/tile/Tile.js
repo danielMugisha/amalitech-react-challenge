@@ -141,9 +141,14 @@ const EditDialog = (props) => {
 					onChange={setSelectedContact}
 					selectedContact={contact}
 				/>
-				<button className="submitButton " onClick={handleSave}>
-					Save
-				</button>
+				<div style={{ display: "flex", justifyContent: "space-evenly" }}>
+					<button className="submitButton " onClick={handleSave}>
+						Save
+					</button>
+					<button className="submitButton " onClick={onClose}>
+						Cancel
+					</button>
+				</div>
 			</DialogContent>
 		</Dialog>
 	);
