@@ -161,9 +161,14 @@ export const Tile = ({ content }) => {
 		setOpen(false);
 	};
 	const gapi = window.gapi;
-	const CLIENT_ID =
-		"147177003777-9dgi8eiu3upcnk3l9talkd7q8a98l88r.apps.googleusercontent.com";
-	const API_KEY = "AIzaSyDMXo4k1iI3MuR3FKjaOJ5AUjquoazCU2U";
+
+	// const CLIENT_ID =
+	//	"147177003777-9dgi8eiu3upcnk3l9talkd7q8a98l88r.apps.googleusercontent.com";
+	//const API_KEY = "AIzaSyDMXo4k1iI3MuR3FKjaOJ5AUjquoazCU2U";
+
+	const CLIENT_ID = "714553465947-8unquceqdso8f710pu2796lliuj557tk.apps.googleusercontent.com";
+	const API_KEY = "AIzaSyBSWvwbpwtcFlIRfScO74mCoLwORYQngsg"
+
 	const DISCOVERY_DOCS = [
 		"https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
 	];
